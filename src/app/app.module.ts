@@ -13,6 +13,8 @@ import { AccesoriosComponent } from './components/accesorios/accesorios.componen
 import { JoyeriaComponent } from './components/joyeria/joyeria.component';
 import { AbouComponent } from './components/abou/abou.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { RopaArtesanalService } from './services/ropa-artesanal.service';
 
 @NgModule({
   declarations: [
@@ -30,9 +32,10 @@ import { AbouComponent } from './components/abou/abou.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent,RopaArtesanalService]
 })
 export class AppModule { }
