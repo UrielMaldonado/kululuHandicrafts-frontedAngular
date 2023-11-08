@@ -29,18 +29,18 @@ export class HomeComponent implements  OnInit {
 
   loadAccesorios() {
     this.accesorioArtesanalService.getAccesorioArtesanales().subscribe((data) => {
-      this.accesorios = data;
+      this.accesorios = data.slice(0, 3); 
     });}
     
   loadArtisans() {
     this.ropaArtesanalService.getRopaArtesanales().subscribe((data) => {
-      this.ropas = data;
+      this.ropas = data.slice(0, 3); 
     });
   }
 
   loadJoyerias() {
     this.joyeriaArtesanalService.getJoyeriaArtesanales().subscribe((data) => {
-      this.joyerias = data;
+      this.joyerias = data.slice(0, 3); 
     });
 
   
