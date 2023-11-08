@@ -1,3 +1,4 @@
+// ropa-RopaArtesanalService.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -12,6 +13,10 @@ export class RopaArtesanalService {
 
   getRopaArtesanales(): Observable<any> {
     return this.http.get(this.apiUrl);
+  }
+  getRopaPiezaById(id: number): Observable<any> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.get(url);
   }
 }
 

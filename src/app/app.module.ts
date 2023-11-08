@@ -15,6 +15,9 @@ import { AbouComponent } from './components/abou/abou.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { RopaArtesanalService } from './services/ropa-artesanal.service';
+import { RopaPiezaComponent } from './components/ropa-pieza/ropa-pieza.component';
+import { JoyeriaPiezaComponent } from './components/joyeria-pieza/joyeria-pieza.component';
+import { AccesorioPiezaComponent } from './components/accesorio-pieza/accesorio-pieza.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,9 @@ import { RopaArtesanalService } from './services/ropa-artesanal.service';
     AccesoriosComponent,
     JoyeriaComponent,
     AbouComponent,
+    RopaPiezaComponent,
+    JoyeriaPiezaComponent,
+    AccesorioPiezaComponent,
 
   ],
   imports: [

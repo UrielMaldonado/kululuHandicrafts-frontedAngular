@@ -1,5 +1,4 @@
-<!-- component -->
-
+<!-- ropa.compoenent.html-->
 <div class="py-20 bg-gray-50">
     <div class="container mx-auto px-6 md:px-12 xl:px-32">
         <div class="mb-16 text-center">
@@ -9,11 +8,14 @@
             <div *ngFor="let ropa of ropas">
                 <img class="w-64 h-64 mx-auto object-cover rounded-xl"
                      [src]="ropa.imagen"
-                     alt="woman" loading="lazy" width="1000" height="667">
+                     alt="woman" loading="lazy" width="1000" height="667"
+                     (click)="navigateToRopaPieza(ropa.id)"> <!-- Agrega el evento click -->
                 <div>
                   <h4 class="text-2xl">{{ ropa.nombre }}</h4>
                   <span class="block text-sm text-gray-500">{{ ropa.descripcion }}</span>
                 </div>
               </div>
+              
         </div>
     </div>
+</div>

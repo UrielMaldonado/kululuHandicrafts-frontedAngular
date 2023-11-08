@@ -1,93 +1,60 @@
 <!-- component -->
 <div class="py-20 bg-gray-50">
-    <div class="container mx-auto px-6 md:px-12 xl:px-32">
-        <div class="mb-16 text-center">
-            <h2 class="mb-4 text-center text-2xl text-gray-900 font-bold md:text-4xl">Ropa Artesanal</h2>
-        </div>
-        <div class="grid gap-12 items-center md:grid-cols-3">
-            <div class="space-y-4 text-center">
-                <img class="w-64 h-64 mx-auto object-cover rounded-xl md:w-40 md:h-40 lg:w-64 lg:h-64"
-                    src="https://th.bing.com/th/id/R.54beceba83b3114a986b230c783c32f8?rik=KUznbeXyypazDw&riu=http%3a%2f%2fwww.redcapitalmx.com%2fwp-content%2fuploads%2f2017%2f02%2fartesan%c3%adas-2.jpg&ehk=7xoVHWwlgqbDbaZHjaCs%2bpmgoCbPI%2bgmSJNP5n9EHXQ%3d&risl=&pid=ImgRaw&r=0"
-                    alt="woman" loading="lazy" width="1000" height="667">
-                <div>
-                    <h4 class="text-2xl">Anabelle Doe</h4>
-                    <span class="block text-sm text-gray-500">Chief Operations Officer</span>
-                </div>
+    <!-- ropa.compoenent.html-->
+    <div class="py-5 bg-gray-50">
+        <div class="container mx-auto px-6 md:px-12 xl:px-32">
+            <div class="mb-16 text-center">
+                <h2 class="mb-4 tex
+                t-center text-2xl text-gray-900 font-bold md:text-4xl">Ropa Artesanal</h2>
             </div>
-            <div class="space-y-4 text-center">
-                <img class="w-64 h-64 mx-auto object-cover rounded-xl md:w-40 md:h-40 lg:w-64 lg:h-64"
-                    src="https://th.bing.com/th/id/R.54beceba83b3114a986b230c783c32f8?rik=KUznbeXyypazDw&riu=http%3a%2f%2fwww.redcapitalmx.com%2fwp-content%2fuploads%2f2017%2f02%2fartesan%c3%adas-2.jpg&ehk=7xoVHWwlgqbDbaZHjaCs%2bpmgoCbPI%2bgmSJNP5n9EHXQ%3d&risl=&pid=ImgRaw&r=0" alt="woman" loading="lazy"
-                    width="1000" height="667">
-                <div>
-                    <h4 class="text-2xl">Anabelle Doe</h4>
-                    <span class="block text-sm text-gray-500">Chief Operations Officer</span>
-                </div>
-            </div>
-            <div class="space-y-4 text-center">
-                <img class="w-64 h-64 mx-auto object-cover rounded-xl md:w-40 md:h-40 lg:w-64 lg:h-64"
-                    src="https://th.bing.com/th/id/R.54beceba83b3114a986b230c783c32f8?rik=KUznbeXyypazDw&riu=http%3a%2f%2fwww.redcapitalmx.com%2fwp-content%2fuploads%2f2017%2f02%2fartesan%c3%adas-2.jpg&ehk=7xoVHWwlgqbDbaZHjaCs%2bpmgoCbPI%2bgmSJNP5n9EHXQ%3d&risl=&pid=ImgRaw&r=0" alt="woman" loading="lazy"
-                    width="1000" height="667">
-                <div>
-                    <h4 class="text-2xl">Anabelle Doe</h4>
-                    <span class="block text-sm text-gray-500">Chief Operations Officer</span>
+            <div class="grid gap-12 items-center md:grid-cols-3">
+                <div *ngFor="let ropa of ropas">
+                    <img class="w-64 h-64 mx-auto object-cover rounded-xl" [src]="ropa.imagen" alt="woman"
+                        loading="lazy" width="1000" height="667" (click)="navigateToRopaPieza(ropa.id)">
+                    <!-- Agrega el evento click -->
+                    <div>
+                        <h4 class="text-2xl">{{ ropa.nombre }}</h4>
+                        <span class="block text-sm text-gray-500">{{ ropa.descripcion }}</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <br>
-    <br>
-    <br>
+    <!-- accesoroios.compoenent.html-->
+    <!-- joyeria.compoenent.html-->
+<div class="py-20 bg-gray-50">
     <div class="container mx-auto px-6 md:px-12 xl:px-32">
         <div class="mb-16 text-center">
-            <h2 class="mb-4 text-center text-2xl text-gray-900 font-bold md:text-4xl">Accesorios</h2>
+            <h2 class="mb-4 text-center text-2xl text-gray-900 font-bold md:text-4xl">Accesorios Artesanal</h2>
         </div>
         <div class="grid gap-12 items-center md:grid-cols-3">
-            <div class="space-y-4 text-center">
-                <img class="w-64 h-64 mx-auto object-cover rounded-xl md:w-40 md:h-40 lg:w-64 lg:h-64"
-                    src="https://th.bing.com/th/id/R.54beceba83b3114a986b230c783c32f8?rik=KUznbeXyypazDw&riu=http%3a%2f%2fwww.redcapitalmx.com%2fwp-content%2fuploads%2f2017%2f02%2fartesan%c3%adas-2.jpg&ehk=7xoVHWwlgqbDbaZHjaCs%2bpmgoCbPI%2bgmSJNP5n9EHXQ%3d&risl=&pid=ImgRaw&r=0"
-                    alt="woman" loading="lazy" width="1000" height="667">
+            <div *ngFor="let accesorio of accesorios">
+                <img class="w-64 h-64 mx-auto object-cover rounded-xl" [src]="accesorio.imagen" alt="woman" loading="lazy"
+                    width="1000" height="667" (click)="navigateToAccesorioPieza(accesorio.id)"> <!-- Agrega el evento click -->
                 <div>
-                    <h4 class="text-2xl">Anabelle Doe</h4>
-                    <span class="block text-sm text-gray-500">Chief Operations Officer</span>
+                    <h4 class="text-2xl">{{ accesorio.nombre }}</h4>
+                    <span class="block text-sm text-gray-500">{{ accesorio.descripcion }}</span>
                 </div>
             </div>
-            <div class="space-y-4 text-center">
-                <img class="w-64 h-64 mx-auto object-cover rounded-xl md:w-40 md:h-40 lg:w-64 lg:h-64"
-                    src="https://th.bing.com/th/id/R.54beceba83b3114a986b230c783c32f8?rik=KUznbeXyypazDw&riu=http%3a%2f%2fwww.redcapitalmx.com%2fwp-content%2fuploads%2f2017%2f02%2fartesan%c3%adas-2.jpg&ehk=7xoVHWwlgqbDbaZHjaCs%2bpmgoCbPI%2bgmSJNP5n9EHXQ%3d&risl=&pid=ImgRaw&r=0" alt="woman" loading="lazy"
-                    width="1000" height="667">
-                <div>
-                    <h4 class="text-2xl">Anabelle Doe</h4>
-                    <span class="block text-sm text-gray-500">Chief Operations Officer</span>
-                </div>
-            </div>
-            <div class="space-y-4 text-center">
-                <img class="w-64 h-64 mx-auto object-cover rounded-xl md:w-40 md:h-40 lg:w-64 lg:h-64"
-                    src="https://th.bing.com/th/id/R.54beceba83b3114a986b230c783c32f8?rik=KUznbeXyypazDw&riu=http%3a%2f%2fwww.redcapitalmx.com%2fwp-content%2fuploads%2f2017%2f02%2fartesan%c3%adas-2.jpg&ehk=7xoVHWwlgqbDbaZHjaCs%2bpmgoCbPI%2bgmSJNP5n9EHXQ%3d&risl=&pid=ImgRaw&r=0" alt="woman" loading="lazy"
-                    width="1000" height="667">
-                <div>
-                    <h4 class="text-2xl">Anabelle Doe</h4>
-                    <span class="block text-sm text-gray-500">Joyeria</span>
-                </div>
-            </div>
+
         </div>
     </div>
-    <br>
-    <br>
-    <br>
-    <div class="container mx-auto px-6 md:px-12 xl:px-32">
-        <div class="mb-16 text-center">
-            <h2 class="mb-4 text-center text-2xl text-gray-900 font-bold md:text-4xl">Ropa Artesanal</h2>
-        </div>
-        <div class="grid gap-12 items-center md:grid-cols-3">
-            <div *ngFor="let ropa of ropas">
-                <img class="w-64 h-64 mx-auto object-cover rounded-xl"
-                     [src]="ropa.imagen"
-                     alt="woman" loading="lazy" width="1000" height="667">
-                <div>
-                  <h4 class="text-2xl">{{ ropa.nombre }}</h4>
-                  <span class="block text-sm text-gray-500">{{ ropa.descripcion }}</span>
+    <!-- joyeria.compoenent.html-->
+    <div class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6 md:px-12 xl:px-32">
+            <div class="mb-16 text-center">
+                <h2 class="mb-4 text-center text-2xl text-gray-900 font-bold md:text-4xl">Joyeria Artesanales</h2>
+            </div>
+            <div class="grid gap-12 items-center md:grid-cols-3">
+                <div *ngFor="let joyeria of joyerias">
+                    <img class="w-64 h-64 mx-auto object-cover rounded-xl" [src]="joyeria.imagen" alt="woman" loading="lazy"
+                        width="1000" height="667" (click)="navigateToJpyeriaPieza(joyeria.id)"> <!-- Agrega el evento click -->
+                    <div>
+                        <h4 class="text-2xl">{{ joyeria.nombre }}</h4>
+                        <span class="block text-sm text-gray-500">{{ joyeria.descripcion }}</span>
+                    </div>
                 </div>
-              </div>
+    
+            </div>
         </div>
-    </div>
 </div>

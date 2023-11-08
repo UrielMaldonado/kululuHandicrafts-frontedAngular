@@ -7,6 +7,9 @@ import { RopaComponent } from './components/ropa/ropa.component';
 import { AccesoriosComponent } from './components/accesorios/accesorios.component'; 
 import { JoyeriaComponent } from './components/joyeria/joyeria.component'; 
 import { AbouComponent } from './components/abou/abou.component'; 
+import { RopaPiezaComponent } from './components/ropa-pieza/ropa-pieza.component'; 
+import { JoyeriaPiezaComponent } from './components/joyeria-pieza/joyeria-pieza.component'; 
+import { AccesorioPiezaComponent } from './components/accesorio-pieza/accesorio-pieza.component'; 
 
 
 const routes: Routes = [
@@ -17,6 +20,9 @@ const routes: Routes = [
   { path: 'accesorios', component: AccesoriosComponent },
   { path: 'joyeria', component: JoyeriaComponent },
   { path: 'about', component: AbouComponent },
+  { path: 'ropa-pieza/:id', component: RopaPiezaComponent },
+  { path: 'joyeria-pieza/:id', component: JoyeriaPiezaComponent },
+  { path: 'accesorio-pieza/:id', component: AccesorioPiezaComponent },
   // Otras rutas
   { path: '', redirectTo: 'home', pathMatch: 'full' }, // Ruta predeterminada
 ];
