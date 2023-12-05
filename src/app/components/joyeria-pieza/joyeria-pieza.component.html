@@ -12,7 +12,10 @@
                         <p class="text-base text-gray-500">{{ joyeria.descripcion }}</p>
                         <p class="text-xl text-gray-900 font-semibold mt-2">Precio: {{ joyeria.precio }}</p>
                         <button *ngIf="showAddToCartButton" class="bg-blue-500 hover-bg-blue-700 text-white text-sm font-semibold py-2 px-4 rounded mt-4">Añadir al Carrito</button>
-                    </div>
+                        <br>
+                        <button *ngIf="editProducto" (click)="irAHome()" class="eliminar-btn bg-green-500 hover-bg-red-700 text-white text-sm font-semibold py-2 px-4 rounded mt-4" style="margin-right: 10px;">Editar</button>
+                        <button *ngIf="editProducto" (click)="irAHome()" class="eliminar-btn bg-red-500 hover-bg-red-700 text-white text-sm font-semibold py-2 px-4 rounded mt-4">Eliminar</button>
+                      </div>
                 </div>
             </div>
         </div>

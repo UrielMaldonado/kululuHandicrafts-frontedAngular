@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AccesorioArtesanalService } from '../../services/accesorios-artesanales.service';
 import { AuthService } from '../../services/auth.service'; // Importa AuthService
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-accesorio-pieza',
@@ -12,13 +13,17 @@ import { AuthService } from '../../services/auth.service'; // Importa AuthServic
 export class AccesorioPiezaComponent implements OnInit {
   accesorio: any;
   showAddToCartButton: boolean = false;  // Variable para controlar la visibilidad del botón
+  editProducto: boolean = false;  // Variable para controlar la visibilidad del botón
 
   constructor(
     private route: ActivatedRoute,
     private accesorioArtesanalService: AccesorioArtesanalService,
-    private authService: AuthService  // Incluye AuthService en la lista de dependencias
-  ) {}
-
+    private authService: AuthService,  // Incluye AuthService en la lista de dependencias
+    private router: Router
+    ) {}
+    irAHome() {
+      this.router.navigate(['/home']);
+    }
   ngOnInit(): void {
     const accesorioIdString = this.route.snapshot.paramMap.get('id');
     
@@ -47,5 +52,6 @@ export class AccesorioPiezaComponent implements OnInit {
 
     // Mostrar el botón si el usuario está autenticado y tiene el rol 2
     this.showAddToCartButton = isAuthenticated && currentUserRole === 2;
+    this.editProducto = isAuthenticated && currentUserRole === 1;
   }
 }

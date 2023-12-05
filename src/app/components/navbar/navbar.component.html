@@ -20,6 +20,8 @@
     <li><a routerLink="/ropa" class="text-sm text-black-600 hover:text-red-500" href="#">Ropa</a></li>
     <li><a routerLink="/accesorios" class="text-sm text-black-600 hover:text-red-500" href="#">Accesorios</a></li>
     <li><a routerLink="/joyeria"  class="text-sm text-black-600 hover:text-red-500" href="#">Joyeria</a></li>
+    <li *ngIf="isAuthenticated() && getUserRole() === 1">
+      <a routerLink="/producto"  class="text-sm text-black-600 hover:text-red-500" href="#">Producto</a></li>
     <li class="text-gray-300">
     </li>
     <li><a routerLink="/about" class="text-sm text-bed-600-400 hover:text-gray-500" href="#">¿Quienes somos?</a></li>
@@ -71,7 +73,10 @@
           <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
             href="/about">Acerca de Nosotros</a>
         </li>
-        <!-- Agrega más elementos de menú según tus necesidades -->
+        <li *ngIf="isAuthenticated() && getUserRole() === 1" class="mb-1">
+          <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
+            routerLink="/producto">Producto</a>
+        </li>
       </ul>
     </div>
     <div class="mt-auto">

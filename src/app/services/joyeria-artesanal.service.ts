@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class JoyeriaArtesanalService { // Cambia el nombre de la clase a JoyeriaArtesanalService
-  private apiUrl = 'http://localhost:3000/producto-artesanal/joyeria';
-  private apiUrlId = 'http://localhost:3000/producto-artesanal-Id';
+  private apiUrl = 'https://backendartesanias.onrender.com/producto-artesanal/joyeria';
+  private apiUrlId = 'https://backendartesanias.onrender.com/producto-artesanal-Id';
 
   constructor(private http: HttpClient) {}
 

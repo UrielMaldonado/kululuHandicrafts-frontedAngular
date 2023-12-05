@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,11 +7,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  // Agrega una propiedad para controlar el estado del menú
   isMenuOpen = false;
 
-  // Define la función para alternar el estado del menú
+  constructor(private authService: AuthService) {}
+
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  isAuthenticated(): boolean {
+    return this.authService.getIsAuthenticated();
+  }
+
+  getUserRole(): number {
+    return this.authService.getCurrentUserRole();
   }
 }

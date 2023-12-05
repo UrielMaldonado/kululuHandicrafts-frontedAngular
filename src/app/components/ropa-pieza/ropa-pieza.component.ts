@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RopaArtesanalService } from '../../services/ropa-artesanal.service';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ropa-pieza',
@@ -11,13 +12,18 @@ import { AuthService } from '../../services/auth.service';
 export class RopaPiezaComponent implements OnInit {
   ropa: any;
   showAddToCartButton: boolean = false;
-
+  editProducto: boolean = false;
+ 
   constructor(
     private route: ActivatedRoute,
     private ropaArtesanalService: RopaArtesanalService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
+  irAHome() {
+    this.router.navigate(['/home']);
+  }
   ngOnInit(): void {
     const ropaIdString = this.route.snapshot.paramMap.get('id');
     
@@ -40,12 +46,13 @@ export class RopaPiezaComponent implements OnInit {
       this.ropa = data;
     });
   }
-
+ 
   checkUserRole() {
     const isAuthenticated = this.authService.getIsAuthenticated();
     const currentUserRole = this.authService.getCurrentUserRole();
 
     // Mostrar el botón si el usuario está autenticado y tiene el rol 2
     this.showAddToCartButton = isAuthenticated && currentUserRole === 2;
+    this.editProducto = isAuthenticated && currentUserRole === 1;
   }
 }

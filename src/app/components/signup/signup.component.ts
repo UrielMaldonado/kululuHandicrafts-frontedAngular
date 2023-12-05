@@ -26,7 +26,7 @@ export class SignupComponent {
       password: this.password
     };
 
-    this.http.post('http://localhost:3000/usuarios', usuario)
+    this.http.post('https://backendartesanias.onrender.com/usuarios', usuario)
     .subscribe(
       (response: any) => {
         console.log('Respuesta del servidor:', response);

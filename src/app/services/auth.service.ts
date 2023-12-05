@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/usuarios';
+  private apiUrl = 'https://backendartesanias.onrender.com/usuarios';
   private isAuthenticated: boolean = false;
   private currentUserRole: number = 0;
 
