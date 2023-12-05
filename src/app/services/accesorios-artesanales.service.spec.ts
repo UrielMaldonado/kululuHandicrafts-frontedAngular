@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AccesorioArtesanalService { // Cambia el nombre de la clase
-  private apiUrl = 'http://localhost:3000/accesorio-artesanal'; // Cambia la URL de la API
+  private apiUrl = 'http://localhost:3000/producto-artesanal/accesorio';
+  private apiUrlId = 'http://localhost:3000/producto-artesanal-Id';
 
   constructor(private http: HttpClient) {}
 
@@ -15,7 +16,7 @@ export class AccesorioArtesanalService { // Cambia el nombre de la clase
   }
 
   getAccesorioPorId(id: number): Observable<any> { // Cambia el nombre del método
-    const url = `${this.apiUrl}/${id}`;
+    const url = `${this.apiUrlId}/${id}`;
     return this.http.get(url);
   }
 }

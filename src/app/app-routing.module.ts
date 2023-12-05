@@ -10,7 +10,7 @@ import { AbouComponent } from './components/abou/abou.component';
 import { RopaPiezaComponent } from './components/ropa-pieza/ropa-pieza.component'; 
 import { JoyeriaPiezaComponent } from './components/joyeria-pieza/joyeria-pieza.component'; 
 import { AccesorioPiezaComponent } from './components/accesorio-pieza/accesorio-pieza.component'; 
-
+import { ProductoComponent } from './components/producto/producto.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -23,6 +23,7 @@ const routes: Routes = [
   { path: 'ropa-pieza/:id', component: RopaPiezaComponent },
   { path: 'joyeria-pieza/:id', component: JoyeriaPiezaComponent },
   { path: 'accesorio-pieza/:id', component: AccesorioPiezaComponent },
+  { path: 'producto', component: ProductoComponent },
   // Otras rutas
   { path: '', redirectTo: 'home', pathMatch: 'full' }, // Ruta predeterminada
 ];

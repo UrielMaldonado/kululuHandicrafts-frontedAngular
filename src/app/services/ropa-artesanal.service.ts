@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class RopaArtesanalService {
-  private apiUrl = 'http://localhost:3000/ropa-artesanal'; // Reemplaza con tu URL
+  private apiUrl = 'http://localhost:3000/producto-artesanal/ropa';
+  private apiUrlId = 'http://localhost:3000/producto-artesanal-Id';
 
   constructor(private http: HttpClient) {}
 
@@ -15,7 +16,7 @@ export class RopaArtesanalService {
     return this.http.get(this.apiUrl);
   }
   getRopaPiezaById(id: number): Observable<any> {
-    const url = `${this.apiUrl}/${id}`;
+    const url = `${this.apiUrlId}/${id}`;
     return this.http.get(url);
   }
 }

@@ -1,7 +1,8 @@
-// En el componente
+// Importa las dependencias necesarias
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AccesorioArtesanalService } from '../../services/accesorios-artesanales.service';
+import { AuthService } from '../../services/auth.service'; // Importa AuthService
 
 @Component({
   selector: 'app-accesorio-pieza',
@@ -10,17 +11,22 @@ import { AccesorioArtesanalService } from '../../services/accesorios-artesanales
 })
 export class AccesorioPiezaComponent implements OnInit {
   accesorio: any;
+  showAddToCartButton: boolean = false;  // Variable para controlar la visibilidad del botón
 
-  constructor(private route: ActivatedRoute, private accesorioArtesanalService: AccesorioArtesanalService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private accesorioArtesanalService: AccesorioArtesanalService,
+    private authService: AuthService  // Incluye AuthService en la lista de dependencias
+  ) {}
 
   ngOnInit(): void {
-    // Obtén el ID de la pieza de accesorio desde los parámetros de la ruta
     const accesorioIdString = this.route.snapshot.paramMap.get('id');
     
     if (accesorioIdString !== null) {
-      const accesorioId = parseInt(accesorioIdString, 10); // Intenta convertir a un número
+      const accesorioId = parseInt(accesorioIdString, 10);
       if (!isNaN(accesorioId)) {
         this.loadAccesorio(accesorioId);
+        this.checkUserRole();  // Verifica el rol del usuario
       } else {
         console.error('ID de pieza de accesorio no válido en los parámetros de la ruta.');
       }
@@ -33,5 +39,13 @@ export class AccesorioPiezaComponent implements OnInit {
     this.accesorioArtesanalService.getAccesorioPorId(id).subscribe((data) => {
       this.accesorio = data;
     });
+  }
+
+  checkUserRole() {
+    const isAuthenticated = this.authService.getIsAuthenticated();
+    const currentUserRole = this.authService.getCurrentUserRole();
+
+    // Mostrar el botón si el usuario está autenticado y tiene el rol 2
+    this.showAddToCartButton = isAuthenticated && currentUserRole === 2;
   }
 }

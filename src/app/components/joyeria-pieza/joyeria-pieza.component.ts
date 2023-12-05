@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { JoyeriaArtesanalService } from '../../services/joyeria-artesanal.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-joyeria-pieza',
@@ -8,18 +9,23 @@ import { JoyeriaArtesanalService } from '../../services/joyeria-artesanal.servic
   styleUrls: ['./joyeria-pieza.component.css']
 })
 export class JoyeriaPiezaComponent implements OnInit {
-  joyeria: any; // Cambia el nombre de la variable
+  joyeria: any;
+  showAddToCartButton: boolean = false;
 
-  constructor(private route: ActivatedRoute, private joyeriaArtesanalService: JoyeriaArtesanalService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private joyeriaArtesanalService: JoyeriaArtesanalService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
-    // Obtén el ID de la pieza de joyería desde los parámetros de la ruta
     const joyeriaIdString = this.route.snapshot.paramMap.get('id');
     
     if (joyeriaIdString !== null) {
-      const joyeriaId = parseInt(joyeriaIdString, 10); // Intenta convertir a un número
+      const joyeriaId = parseInt(joyeriaIdString, 10);
       if (!isNaN(joyeriaId)) {
         this.loadJoyeria(joyeriaId);
+        this.checkUserRole();
       } else {
         console.error('ID de pieza de joyería no válido en los parámetros de la ruta.');
       }
@@ -30,7 +36,15 @@ export class JoyeriaPiezaComponent implements OnInit {
 
   loadJoyeria(id: number) {
     this.joyeriaArtesanalService.getJoyeriaPiezaById(id).subscribe((data) => {
-      this.joyeria = data; // Cambia el nombre de la variable
+      this.joyeria = data;
     });
+  }
+
+  checkUserRole() {
+    const isAuthenticated = this.authService.getIsAuthenticated();
+    const currentUserRole = this.authService.getCurrentUserRole();
+
+    // Mostrar el botón si el usuario está autenticado y tiene el rol 2
+    this.showAddToCartButton = isAuthenticated && currentUserRole === 2;
   }
 }

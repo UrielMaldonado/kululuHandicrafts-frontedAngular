@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RopaArtesanalService } from '../../services/ropa-artesanal.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-ropa-pieza',
@@ -9,18 +10,23 @@ import { RopaArtesanalService } from '../../services/ropa-artesanal.service';
 })
 export class RopaPiezaComponent implements OnInit {
   ropa: any;
+  showAddToCartButton: boolean = false;
 
-  constructor(private route: ActivatedRoute, private ropaArtesanalService: RopaArtesanalService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private ropaArtesanalService: RopaArtesanalService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
-    // Obtén el ID de la pieza de ropa desde los parámetros de la ruta
     const ropaIdString = this.route.snapshot.paramMap.get('id');
     
     if (ropaIdString !== null) {
-      const ropaId = parseInt(ropaIdString, 10); // Intenta convertir a un número
+      const ropaId = parseInt(ropaIdString, 10);
 
       if (!isNaN(ropaId)) {
         this.loadRopa(ropaId);
+        this.checkUserRole();
       } else {
         console.error('ID de pieza de ropa no válido en los parámetros de la ruta.');
       }
@@ -33,5 +39,13 @@ export class RopaPiezaComponent implements OnInit {
     this.ropaArtesanalService.getRopaPiezaById(id).subscribe((data) => {
       this.ropa = data;
     });
+  }
+
+  checkUserRole() {
+    const isAuthenticated = this.authService.getIsAuthenticated();
+    const currentUserRole = this.authService.getCurrentUserRole();
+
+    // Mostrar el botón si el usuario está autenticado y tiene el rol 2
+    this.showAddToCartButton = isAuthenticated && currentUserRole === 2;
   }
 }
