@@ -1,0 +1,12 @@
+
+ng add @angular/pwa
+
+npm i -g firebase-tools
+
+firebase login
+
+firebase init 
+
+ng build
+
+firebase deploy
