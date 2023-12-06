@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +19,7 @@ import { RopaPiezaComponent } from './components/ropa-pieza/ropa-pieza.component
 import { JoyeriaPiezaComponent } from './components/joyeria-pieza/joyeria-pieza.component';
 import { AccesorioPiezaComponent } from './components/accesorio-pieza/accesorio-pieza.component';
 import { ProductoComponent } from './components/producto/producto.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,13 @@ import { ProductoComponent } from './components/producto/producto.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent,RopaArtesanalService]

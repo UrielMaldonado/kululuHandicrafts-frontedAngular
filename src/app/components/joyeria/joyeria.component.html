@@ -8,9 +8,9 @@
             <div *ngFor="let joyeria of joyerias">
                 <img class="w-64 h-64 mx-auto object-cover rounded-xl" [src]="joyeria.imagen" alt="woman" loading="lazy"
                     width="1000" height="667" (click)="navigateToJpyeriaPieza(joyeria.id)"> <!-- Agrega el evento click -->
-                <div>
-                    <h4 class="text-2xl">{{ joyeria.nombre }}</h4>
-                    <span class="block text-sm text-gray-500">{{ joyeria.descripcion }}</span>
+                <div class="abc" >
+                    <h4 id="xy">{{ joyeria.nombre }}</h4>
+                    <span id="xyz">{{ joyeria.descripcion }}</span>
                 </div>
             </div>
 

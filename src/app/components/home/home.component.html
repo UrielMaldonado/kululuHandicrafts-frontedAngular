@@ -11,50 +11,48 @@
                 <div *ngFor="let ropa of ropas">
                     <img class="w-64 h-64 mx-auto object-cover rounded-xl" [src]="ropa.imagen" alt="woman"
                         loading="lazy" width="1000" height="667" (click)="navigateToRopaPieza(ropa.id)">
-                    <!-- Agrega el evento click -->
-                    <div>
-                        <h4 class="text-2xl">{{ ropa.nombre }}</h4>
-                        <span class="block text-sm text-gray-500">{{ ropa.descripcion }}</span>
+                    <div class="abc">
+                        <h4 id="xy">{{ ropa.nombre }}</h4>
+                        <span id="xyz">{{ ropa.descripcion }}</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- accesoroios.compoenent.html-->
+</div>
+<div class="py-20 bg-white">
+    <div class="container mx-auto px-6 md:px-12 xl:px-32">
+        <div class="mb-16 text-center">
+            <h2 class="mb-4 text-center text-2xl text-gray-900 font-bold md:text-4xl">Accesorios Artesanal</h2>
+        </div>
+        <div class="grid gap-12 items-center md:grid-cols-3">
+            <div *ngFor="let accesorio of accesorios">
+                <img class="w-64 h-64 mx-auto object-cover rounded-xl" [src]="accesorio.imagen" alt="woman"
+                    loading="lazy" width="1000" height="667" (click)="navigateToAccesorioPieza(accesorio.id)">
+                <!-- Agrega el evento click -->
+                <div class="abc">
+                    <h4 id="xy">{{ accesorio.nombre }}</h4>
+                    <span id="xyz">{{ accesorio.descripcion }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- joyeria.compoenent.html-->
     <div class="py-20 bg-white">
         <div class="container mx-auto px-6 md:px-12 xl:px-32">
             <div class="mb-16 text-center">
-                <h2 class="mb-4 text-center text-2xl text-gray-900 font-bold md:text-4xl">Accesorios Artesanal</h2>
+                <h2 class="mb-4 text-center text-2xl text-gray-900 font-bold md:text-4xl">Joyeria Artesanal</h2>
             </div>
             <div class="grid gap-12 items-center md:grid-cols-3">
-                <div *ngFor="let accesorio of accesorios">
-                    <img class="w-64 h-64 mx-auto object-cover rounded-xl" [src]="accesorio.imagen" alt="woman"
-                        loading="lazy" width="1000" height="667" (click)="navigateToAccesorioPieza(accesorio.id)">
+                <div *ngFor="let joyeria of joyerias">
+                    <img class="w-64 h-64 mx-auto object-cover rounded-xl" [src]="joyeria.imagen" alt="woman"
+                        loading="lazy" width="1000" height="667" (click)="navigateToJpyeriaPieza(joyeria.id)">
                     <!-- Agrega el evento click -->
-                    <div>
-                        <h4 class="text-2xl">{{ accesorio.nombre }}</h4>
-                        <span class="block text-sm text-gray-500">{{ accesorio.descripcion }}</span>
+                    <div class="abc">
+                        <h4 id="xy">{{ joyeria.nombre }}</h4>
+                        <span id="xyz">{{ joyeria.descripcion }}</span>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- joyeria.compoenent.html-->
-        <div class="py-20 bg-white">
-            <div class="container mx-auto px-6 md:px-12 xl:px-32">
-                <div class="mb-16 text-center">
-                    <h2 class="mb-4 text-center text-2xl text-gray-900 font-bold md:text-4xl">Joyeria Artesanal</h2>
-                </div>
-                <div class="grid gap-12 items-center md:grid-cols-3">
-                    <div *ngFor="let joyeria of joyerias">
-                        <img class="w-64 h-64 mx-auto object-cover rounded-xl" [src]="joyeria.imagen" alt="woman"
-                            loading="lazy" width="1000" height="667" (click)="navigateToJpyeriaPieza(joyeria.id)">
-                        <!-- Agrega el evento click -->
-                        <div>
-                            <h4 class="text-2xl">{{ joyeria.nombre }}</h4>
-                            <span class="block text-sm text-gray-500">{{ joyeria.descripcion }}</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </div>

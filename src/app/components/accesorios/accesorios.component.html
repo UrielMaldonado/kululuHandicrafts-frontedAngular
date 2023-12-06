@@ -6,13 +6,13 @@
         </div>
         <div class="grid gap-12 items-center md:grid-cols-3">
             <div *ngFor="let accesorio of accesorios">
-                <img class="w-64 h-64 mx-auto object-cover rounded-xl" [src]="accesorio.imagen" alt="woman" loading="lazy"
-                    width="1000" height="667" (click)="navigateToAccesorioPieza(accesorio.id)"> <!-- Agrega el evento click -->
-                <div>
-                    <h4 class="text-2xl">{{ accesorio.nombre }}</h4>
-                    <span class="block text-sm text-gray-500">{{ accesorio.descripcion }}</span>
+                <img class="w-64 h-64 mx-auto object-cover rounded-xl" [src]="accesorio.imagen" alt="woman"
+                    loading="lazy" width="1000" height="667" (click)="navigateToAccesorioPieza(accesorio.id)">
+                <!-- Agrega el evento click -->
+                <div class="abc">
+                    <h4 id="xy">{{ accesorio.nombre }}</h4>
+                    <span id="xyz">{{ accesorio.descripcion }}</span>
                 </div>
-            </div>
 
         </div>
     </div>
